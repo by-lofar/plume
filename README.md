@@ -30,21 +30,39 @@ Plume is a static site theme for developers who want to share their work, curate
 
 The theme adapts automatically to the OS colour preference — no JavaScript required.
 
+<details>
+<summary>Light / Dark</summary>
+
 | Light (default) | Dark (`prefers-color-scheme: dark`) |
 |---|---|
 | ![Home — light](docs/home-light.png) | ![Home — dark](docs/home-dark.png) |
+
+</details>
+
+<details>
+<summary>Watch / Experiences</summary>
 
 | Watch | Experiences |
 |---|---|
 | ![Watch](docs/watch.png) | ![Experiences](docs/experiences.png) |
 
+</details>
+
 ### Lighthouse — Home
 
+<details>
+<summary>100 / 100 — Performance · Accessibility · Best Practices · SEO</summary>
+
 ![Lighthouse scores for /](docs/lighthouse-home.png)
+
+</details>
 
 ### Build output sizes
 
 HTML pages are minified at build time via `astro-compress` (Logger level 2). Run `npm run build:sizes` to get the per-file breakdown.
+
+<details>
+<summary>Per-page sizes</summary>
 
 | Page | Before | After | Saving |
 |---|---|---|---|
@@ -59,11 +77,16 @@ HTML pages are minified at build time via `astro-compress` (Logger level 2). Run
 | CSS bundle | 96 125 B | 95 916 B | -0% |
 | `favicon.svg` | 749 B | 644 B | -14% |
 
+</details>
+
 ---
 
 ## Getting started
 
 Node >= 22.12.0 is required.
+
+<details>
+<summary>Setup</summary>
 
 ```sh
 git clone <this-repo> my-site
@@ -71,6 +94,8 @@ cd my-site
 npm install
 npm run dev        # dev server at localhost:4321
 ```
+
+</details>
 
 ---
 
@@ -87,6 +112,7 @@ npm run dev        # dev server at localhost:4321
 | `npm run astro ...` | Run Astro CLI (e.g. `astro check`, `astro add`) |
 | `npx playwright test` | Run e2e tests (requires a prior `npm run build`) |
 | `npm run lighthouse` | Build, start preview, and open [Unlighthouse](https://unlighthouse.dev) UI |
+| `npm run build:sizes` | Build and print per-file compressed sizes |
 
 ---
 
@@ -95,6 +121,9 @@ npm run dev        # dev server at localhost:4321
 ### Identity and hero
 
 Edit `src/data/hero.md`. The frontmatter fields are `name`, `title`, and `email`. The Markdown body is the short pitch displayed under the title.
+
+<details>
+<summary>Example</summary>
 
 ```md
 ---
@@ -106,9 +135,14 @@ email: "jane@example.com"
 Two or three sentences about how you work and what you care about.
 ```
 
+</details>
+
 ### Site metadata
 
 Edit `src/data/site.json`:
+
+<details>
+<summary>Example</summary>
 
 ```json
 {
@@ -124,11 +158,16 @@ Edit `src/data/site.json`:
 }
 ```
 
+</details>
+
 `siteUrl` must be set for the sitemap and RSS feed to work correctly.
 
 ### Social links
 
 Edit `src/data/home.json`. Links with `https://…` open in a new tab; links starting with `/` stay in the same tab (useful for RSS).
+
+<details>
+<summary>Example</summary>
 
 ```json
 {
@@ -139,9 +178,14 @@ Edit `src/data/home.json`. Links with `https://…` open in a new tab; links sta
 }
 ```
 
+</details>
+
 ### UI strings and labels
 
 All static strings (navigation labels, section titles, button text) live in `src/i18n/en.ts`. Edit that file to change any label without touching components or pages.
+
+<details>
+<summary>Example</summary>
 
 ```ts
 export const en = {
@@ -151,11 +195,16 @@ export const en = {
 }
 ```
 
+</details>
+
 To add a second language, create `src/i18n/fr.ts` with the same shape and change the re-export in `src/i18n/index.ts`.
 
 ### Experiences
 
 Add `.mdx` files to `src/content/experiences/`. Each file represents one position.
+
+<details>
+<summary>Example</summary>
 
 ```mdx
 ---
@@ -169,9 +218,14 @@ tags: ["TypeScript", "PostgreSQL", "Docker"]
 Description of what you did and what you built.
 ```
 
+</details>
+
 ### Skills table
 
 Edit `src/data/skills.json`. Each entry is a category with a flat list of skill names.
+
+<details>
+<summary>Example</summary>
 
 ```json
 [
@@ -180,9 +234,14 @@ Edit `src/data/skills.json`. Each entry is a category with a flat list of skill 
 ]
 ```
 
+</details>
+
 ### Projects
 
 Add `.mdx` files to `src/content/projects/`. The `date` field (`YYYY-MM`) controls sort order.
+
+<details>
+<summary>Example</summary>
 
 ```mdx
 ---
@@ -197,9 +256,14 @@ links:
 What it is and why you built it.
 ```
 
+</details>
+
 ### Watch feed
 
 Add `.mdx` files to `src/content/watch/`. The body is optional — it is rendered as a comment below the link on the full feed page.
+
+<details>
+<summary>Example</summary>
 
 ```mdx
 ---
@@ -215,9 +279,14 @@ source:
 Optional commentary on why this link is worth reading.
 ```
 
+</details>
+
 ### Plain Markdown pages
 
 `/about`, `/now`, and `/legal` are plain Markdown files in `src/pages/`. Edit them directly — no frontmatter schema, just a `title` field used for the `<title>` tag.
+
+<details>
+<summary>Example</summary>
 
 ```md
 ---
@@ -227,6 +296,8 @@ title: "About"
 Write whatever you want here.
 ```
 
+</details>
+
 ---
 
 ## Adapting the colour scheme
@@ -234,6 +305,9 @@ Write whatever you want here.
 The theme uses [Flexoki](https://stephango.com/flexoki) in monochromatic mode. Two variants are defined in `src/styles/global.css` — `flexoki-light` (default) and `flexoki-dark` — and the active one is selected automatically via `prefers-color-scheme`. No JavaScript is involved.
 
 Every token follows the [DaisyUI semantic naming convention](https://daisyui.com/docs/themes/). To swap to a different palette, replace the `oklch(…)` values in the relevant block:
+
+<details>
+<summary>Theme tokens</summary>
 
 ```css
 /* Light variant — shown by default */
@@ -269,11 +343,16 @@ Every token follows the [DaisyUI semantic naming convention](https://daisyui.com
 }
 ```
 
+</details>
+
 The `default: true` theme is applied to `:root` unconditionally. The `prefersdark: true` theme overrides it inside `@media (prefers-color-scheme: dark)`. No `data-theme` attribute is set on `<html>` — the switch is entirely CSS-driven.
 
 You can pick `oklch` values directly from [oklch.com](https://oklch.com). To force a single theme regardless of OS preference, remove the `prefersdark` block and keep only the `default` one.
 
 To use a built-in DaisyUI theme instead, replace both `@plugin "daisyui/theme" { … }` blocks with:
+
+<details>
+<summary>Using a built-in DaisyUI theme</summary>
 
 ```css
 @plugin "daisyui" {
@@ -281,9 +360,14 @@ To use a built-in DaisyUI theme instead, replace both `@plugin "daisyui/theme" {
 }
 ```
 
+</details>
+
 ---
 
 ## Project structure
+
+<details>
+<summary>Directory layout</summary>
 
 ```
 src/
@@ -311,16 +395,23 @@ tests/                   # Playwright tests
 spec/                    # Project specifications (see below)
 ```
 
+</details>
+
 ---
 
 ## Tests
 
 Tests run against the **production build** via `astro preview`. The Playwright config starts the preview server automatically.
 
+<details>
+<summary>Run tests</summary>
+
 ```sh
 npm run build
 npx playwright test
 ```
+
+</details>
 
 Four test suites:
 
@@ -332,6 +423,9 @@ Four test suites:
 | `tests/a11y.spec.ts` | WCAG 2.1 AA via axe-core on every sitemap URL |
 
 To regenerate the screenshots in this README after making visual changes:
+
+<details>
+<summary>Regenerate screenshots</summary>
 
 ```sh
 npm run build
@@ -348,6 +442,8 @@ await browser.close();
 EOF
 ```
 
+</details>
+
 ---
 
 ## Built from specs
@@ -355,6 +451,9 @@ EOF
 Plume was built following a **Spec Driven Development** approach — without any dedicated tooling. Every design and technical decision is written down as a plain Markdown spec before any code is written. The specs act as the single source of truth: they define structure, content models, styling constraints, and test strategy. An LLM (Claude Code) is then used to implement from the spec, keeping the code and its intent in sync.
 
 All specifications live in `spec/`. Every decision — structure, styling rules, content schemas, testing strategy — is documented there.
+
+<details>
+<summary>Spec directory</summary>
 
 ```
 spec/
@@ -370,6 +469,8 @@ spec/
 ├── testing.md           # Playwright test strategy
 └── cicd.md              # GitHub Actions, Dependabot, Coolify deployment
 ```
+
+</details>
 
 ### Building your own theme from specs
 
