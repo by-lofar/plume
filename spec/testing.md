@@ -69,11 +69,13 @@ The preview server must be given time to start before Playwright runs. Use Playw
 ```ts
 // playwright.config.ts
 webServer: {
-    command: 'npm run preview',
-        url: 'http://localhost:4321',
-        reuseExistingServer: false,
+    command: 'npm run preview -- --port 4322',
+    url: 'http://localhost:4322',
+    reuseExistingServer: false,
 }
 ```
+
+Port 4322 is used to avoid conflicts with the dev server (`astro dev`) running on 4321.
 
 ---
 

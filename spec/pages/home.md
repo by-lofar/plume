@@ -38,11 +38,12 @@ The Markdown body is required. It is the short pitch displayed in the hero — a
 
 ## 3. Page structure
 
-The page renders three sections in order:
+The page renders four sections in order:
 
 1. **Hero** — identity and contact
 2. **Liens** — social and contact links
-3. **Veille** — preview of the most recent entries
+3. **Projets** — preview of the most recent projects
+4. **Veille** — preview of the most recent veille entries
 
 ---
 
@@ -71,7 +72,24 @@ No icons unless they can be rendered in pure CSS or inline SVG without an icon l
 
 ---
 
-## 6. Veille preview rendering
+## 6. Projects preview rendering
+
+Displays the **`PROJECTS_PREVIEW_COUNT`** most recent projects, sorted by `date` descending. Fetched at build time from the projects content collection. `PROJECTS_PREVIEW_COUNT` is defined in `src/config.ts` and adjusted based on visual fit.
+
+Each entry renders:
+
+- **Title** — plain text, not a link
+- **Date** — formatted as `MMM YYYY`
+- **Stack** — flat list of labels
+- **Description** — body rendered as plain text (no MDX processing)
+- **Links** — flat list of external links, same as the full card
+
+The section includes a link to `/projets` to access the full list.
+
+
+---
+
+## 7. Veille preview rendering
 
 Displays the **`VEILLE_PREVIEW_COUNT`** most recent veille entries, sorted by `date` descending. Fetched at build time from the veille content collection. `VEILLE_PREVIEW_COUNT` is defined in `src/config.ts` and adjusted based on visual fit.
 
@@ -85,7 +103,7 @@ Tags and comments are not shown in the preview. The section includes a link to `
 
 ---
 
-## 7. Out of scope
+## 8. Out of scope
 
 - Contact form — a mailto link is sufficient
 - Featured or pinned veille entries

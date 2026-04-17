@@ -61,9 +61,10 @@ All specifications live in `spec/`. Read the relevant spec before implementing a
 
 | Route | Type | Notes |
 |---|---|---|
-| `/` | static | hero, social links, veille preview |
+| `/` | static | hero, social links, projets preview, veille preview |
 | `/a-propos` | Markdown | plain page, no collection |
 | `/experiences` | collection | MDX entries + `skills.json` |
+| `/projets` | collection | MDX entries, preview on home |
 | `/veille` | collection | paginated feed, RSS at `/veille/rss.xml` |
 | `/now` | Markdown | plain page, no collection |
 | `/mentions-legales` | Markdown | plain page, no collection |
